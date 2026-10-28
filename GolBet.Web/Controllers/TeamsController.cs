@@ -1,10 +1,14 @@
 // GolBet.Web/Controllers/TeamsController.cs
+using GolBet.Repositories.Data;   // role constants
 using GolBet.Services.DTOs;
 using GolBet.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GolBet.Web.Controllers;
 
+// The whole teams management is Admin-only
+[Authorize(Roles = DbSeeder.AdminRole)]
 public class TeamsController : Controller
 {
     private readonly ITeamService _teamService;
